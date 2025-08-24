@@ -93,10 +93,16 @@ export default function ChatBot() {
 
     return (
         <>
-            <div className="flex flex-col justify-between h-screen max-w-3xl mx-auto p-4 bg-blue-950">
-                <div className="chat-messages-div">
-                    <h1 className="text-center text-3xl font-bold">Messages</h1>
-                    <ChatBotMessages messages={messages} />
+            <div className="flex justify-between align-middle max-w-3xl mx-auto p-4 bg-blue-950">
+                <div className="p-4 text-white">
+                    <h1 className="text-2xl font-bold">ChatBot</h1>
+                    {audioReady ? (
+                        <button onClick={handlePlay} className="mt-4 px-4 py-2 bg-green-600 rounded">
+                            🔊 Play Kokoro TTS
+                        </button>
+                    ) : (
+                        <p className="text-gray-400">Generating speech...</p>
+                    )}
                 </div>
 
                 <div className="input-box-div mb-1 flex flex-col md:flex-row gap-2">
@@ -110,18 +116,6 @@ export default function ChatBot() {
                     />
                     <button onClick={handleSend} className="bg-red-500 py-2 px-4 border-white border-2 rounded-2xl ml-1">Send</button>
                 </div>
-
-            </div>
-
-            <div className="p-4 text-white">
-                <h1 className="text-2xl font-bold">ChatBot</h1>
-                {audioReady ? (
-                    <button onClick={handlePlay} className="mt-4 px-4 py-2 bg-green-600 rounded">
-                        🔊 Play Kokoro TTS
-                    </button>
-                ) : (
-                    <p className="text-gray-400">Generating speech...</p>
-                )}
             </div>
         </>
     )
